@@ -31,6 +31,14 @@ public class DBManager {
 		return instance;
 	}
 	
+	public ArrayList<Spieler> searchSpieler(String phrase){
+		
+		return null; 
+	}
 	
+	public ArrayList<Teams> searchTeams(String phrase){
+		
+		return null;
+	}
 
 }
