@@ -34,25 +34,7 @@ public class NFLServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-			System.out.println("Servlet aufgerufen");
-			//DBManager db = new DBManager();
-			//ArrayList<Teile> teile = db.searchTeile(bez);
-			ArrayList<Spieler> spieler = new ArrayList<Spieler>();
-			
-			spieler.add(new Spieler(1,"big", "ben", "23.03.2010", 5, 6,3,3,3));
-			spieler.add(new Spieler(2,"big", "ben", "23.03.2010", 5, 6,3,3,3));
-			spieler.add(new Spieler(3,"big", "ben", "23.03.2010", 5, 6,3,3,3));
-			spieler.add(new Spieler(4,"big", "ben", "23.03.2010", 5, 6,3,3,3));
-			
-			
-			String jsonText = new Gson().toJson(spieler);
-						
-			response.setContentType("text/plain");
-			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write("hello");
-			System.out.println("Gesendet");
-			
-
+		doPost(request, response);
 	}
 
 	/**
@@ -60,7 +42,24 @@ public class NFLServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		System.out.println("Servlet aufgerufen");
+		//DBManager db = new DBManager();
+		//ArrayList<Teile> teile = db.searchTeile(bez);
+		ArrayList<Spieler> spieler = new ArrayList<Spieler>();
+		
+		spieler.add(new Spieler(1,"big", "ben", "23.03.2010", 5, 6,3,3,3));
+		spieler.add(new Spieler(2,"big", "ben", "23.03.2010", 5, 6,3,3,3));
+		spieler.add(new Spieler(3,"big", "ben", "23.03.2010", 5, 6,3,3,3));
+		spieler.add(new Spieler(4,"big", "ben", "23.03.2010", 5, 6,3,3,3));
+		
+		
+		String jsonText = new Gson().toJson(spieler);
+					
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write("hello");
+		System.out.println("Gesendet");
 	}
 
 }
