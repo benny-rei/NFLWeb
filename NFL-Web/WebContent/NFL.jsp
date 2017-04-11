@@ -5,44 +5,53 @@
 <head>
 <!-- Bootstrap  -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- Latest compiled and minified CSS -->
+<!-- eigenes Bootstrap-CSS -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
+	href="/home/bennny/git/NFLWeb/NFL-Web/WebContent/Bootsprap/css/bootstrap.css">
 
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous">
 
-<!-- Latest compiled and minified JavaScript -->
+<!-- eigenes Bootstrap-JS -->
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
+	src="/home/bennny/git/NFLWeb/NFL-Web/WebContent/Bootsprap/js/bootstrap.min.js"></script>
 <!--/ Bootstrap  -->
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <title>NFL</title>
 </head>
 <body>
 
-	<h1>NFL Teams</h1>
-	<div>
-		<ul>
-			<li>Packersf34uiofbg uio413frbgio 34bgio3rbgio4brgiob42rtigob4 iogb24iogb 24iobg</li>
-			<li>Packers</li>
-			<li>Packers</li>
-			<li>Packers</li>
+	<h1>NFL spieler</h1>
+
+	<button id="anzeigeButton" onclick="loadDoc()">Anzeigen</button>
+
+	<div id="spieler">Zuig</div>
 
 
-		</ul>
+	<script>
+		
+		function loadDoc() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					
+					//document.getElementById("spieler").innerHTML = this.responseText;
+					document.getElementById("spieler").innerHTML = "Test";
+				}
+			};
+			xhttp.open('GET', 'NFLServlet', true);
+			xhttp.send();
+		}
 
-
-
-	</div>
-
+		/*$(document).on("click", "#anzeigeButton", function() { // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
+			$.get("NFLServlet", function(responseJson) { // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
+				var $ul = $("<ul>").appendTo($("#spieler")); // Create HTML <ul> element and append it to HTML DOM element with ID "somediv".
+				$.each(responseJson, function(index, item) { // Iterate over the JSON array.
+					$("<li>").text(item).appendTo($ul); // Create HTML <li> element, set its text content with currently iterated item and append it to the <ul>.
+				});
+			});
+		});*/
+	</script>
 
 </body>
 </html>

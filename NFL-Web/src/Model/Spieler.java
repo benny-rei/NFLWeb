@@ -1,111 +1,97 @@
 package Model;
 
 public class Spieler {
-
-	private enum Conference{AFC, NFC}
-	private enum Division{NORTH, SOUTH, EASY, WEST}
 	
-	private String teamname, ort, stadionname;
-	private Conference conference;
-	private Division division;
-	private int superbowlTitel, championshipTitel, gruendungsjahr;
+	private int spielerID;
+	private String vorname, nachname, geburtsdatum;
+	private int superBowlErfolge, championshipTitel, prowbowlWahlen, seasonMVP, superbowlMVP;
 	
-	
-	public Spieler(String teamname, String ort, String stadionname, Conference conference, Division division,
-			int superbowlTitel, int championshipTitel, int gruendungsjahr) {
+	public Spieler(int spielerID, String vorname, String nachname, String geburtsdatum, int superBowlErfolge,
+			int championshipTitel, int prowbowlWahlen, int seasonMVP, int superbowlMVP) {
 		super();
-		this.teamname = teamname;
-		this.ort = ort;
-		this.stadionname = stadionname;
-		this.conference = conference;
-		this.division = division;
-		this.superbowlTitel = superbowlTitel;
+		this.spielerID = spielerID;
+		this.vorname = vorname;
+		this.nachname = nachname;
+		this.geburtsdatum = geburtsdatum;
+		this.superBowlErfolge = superBowlErfolge;
 		this.championshipTitel = championshipTitel;
-		this.gruendungsjahr = gruendungsjahr;
+		this.prowbowlWahlen = prowbowlWahlen;
+		this.seasonMVP = seasonMVP;
+		this.superbowlMVP = superbowlMVP;
+		
 	}
 
-
-	public String getTeamname() {
-		return teamname;
+	public int getSpielerID() {
+		return spielerID;
 	}
 
-
-	public void setTeamname(String teamname) {
-		this.teamname = teamname;
+	public void setSpielerID(int spielerID) {
+		this.spielerID = spielerID;
 	}
 
-
-	public String getOrt() {
-		return ort;
+	public String getVorname() {
+		return vorname;
 	}
 
-
-	public void setOrt(String ort) {
-		this.ort = ort;
+	public void setVorname(String vorname) {
+		this.vorname = vorname;
 	}
 
-
-	public String getStadionname() {
-		return stadionname;
+	public String getNachname() {
+		return nachname;
 	}
 
-
-	public void setStadionname(String stadionname) {
-		this.stadionname = stadionname;
+	public void setNachname(String nachname) {
+		this.nachname = nachname;
 	}
 
-
-	public Conference getConference() {
-		return conference;
+	public String getGeburtsdatum() {
+		return geburtsdatum;
 	}
 
-
-	public void setConference(Conference conference) {
-		this.conference = conference;
+	public void setGeburtsdatum(String geburtsdatum) {
+		this.geburtsdatum = geburtsdatum;
 	}
 
-
-	public Division getDivision() {
-		return division;
+	public int getSuperBowlErfolge() {
+		return superBowlErfolge;
 	}
 
-
-	public void setDivision(Division division) {
-		this.division = division;
+	public void setSuperBowlErfolge(int superBowlErfolge) {
+		this.superBowlErfolge = superBowlErfolge;
 	}
-
-
-	public int getSuperbowlTitel() {
-		return superbowlTitel;
-	}
-
-
-	public void setSuperbowlTitel(int superbowlTitel) {
-		this.superbowlTitel = superbowlTitel;
-	}
-
 
 	public int getChampionshipTitel() {
 		return championshipTitel;
 	}
 
-
 	public void setChampionshipTitel(int championshipTitel) {
 		this.championshipTitel = championshipTitel;
 	}
 
-
-	public int getGruendungsjahr() {
-		return gruendungsjahr;
+	public int getProwbowlWahlen() {
+		return prowbowlWahlen;
 	}
 
-
-	public void setGruendungsjahr(int gruendungsjahr) {
-		this.gruendungsjahr = gruendungsjahr;
+	public void setProwbowlWahlen(int prowbowlWahlen) {
+		this.prowbowlWahlen = prowbowlWahlen;
 	}
-	
-	
-	
+
+	public int getSeasonMVP() {
+		return seasonMVP;
+	}
+
+	public void setSeasonMVP(int seasonMVP) {
+		this.seasonMVP = seasonMVP;
+	}
+
+	public int getSuperbowlMVP() {
+		return superbowlMVP;
+	}
+
+	public void setSuperbowlMVP(int superbowlMVP) {
+		this.superbowlMVP = superbowlMVP;
+	}
 	
 	
 	

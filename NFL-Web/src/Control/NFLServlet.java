@@ -1,11 +1,17 @@
 package Control;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import Model.Spieler;
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class NFLServlet
@@ -27,7 +33,26 @@ public class NFLServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+			System.out.println("Servlet aufgerufen");
+			//DBManager db = new DBManager();
+			//ArrayList<Teile> teile = db.searchTeile(bez);
+			ArrayList<Spieler> spieler = new ArrayList<Spieler>();
+			
+			spieler.add(new Spieler(1,"big", "ben", "23.03.2010", 5, 6,3,3,3));
+			spieler.add(new Spieler(2,"big", "ben", "23.03.2010", 5, 6,3,3,3));
+			spieler.add(new Spieler(3,"big", "ben", "23.03.2010", 5, 6,3,3,3));
+			spieler.add(new Spieler(4,"big", "ben", "23.03.2010", 5, 6,3,3,3));
+			
+			
+			String jsonText = new Gson().toJson(spieler);
+						
+			response.setContentType("text/plain");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write("hello");
+			System.out.println("Gesendet");
+			
+
 	}
 
 	/**

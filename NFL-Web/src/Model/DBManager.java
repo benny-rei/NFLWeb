@@ -31,12 +31,12 @@ public class DBManager {
 		return instance;
 	}
 	
-	public ArrayList<Spieler> searchSpieler(String phrase){
+	public ArrayList<Team> searchSpieler(String phrase){
 		
 		return null; 
 	}
 	
-	public ArrayList<Teams> searchTeams(String phrase){
+	public ArrayList<Spieler> searchTeams(String phrase){
 		
 		return null;
 	}
