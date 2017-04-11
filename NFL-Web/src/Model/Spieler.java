@@ -20,7 +20,14 @@ public class Spieler {
 		this.superbowlMVP = superbowlMVP;
 		
 	}
+	
+	
+	
+	public Spieler() {
+		super();
+	}
 
+	
 	public int getSpielerID() {
 		return spielerID;
 	}

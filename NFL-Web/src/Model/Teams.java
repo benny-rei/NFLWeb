@@ -1,17 +1,13 @@
 package Model;
 
-public class Team {
-
-	private enum Conference{AFC, NFC}
-	private enum Division{NORTH, SOUTH, EASY, WEST}
+public class Teams {
 	
-	private String teamname, ort, stadionname;
-	private Conference conference;
-	private Division division;
+	private String teamname, ort, stadionname, conference, division;
+	
 	private int superbowlTitel, championshipTitel, gruendungsjahr;
 	
 	
-	public Team(String teamname, String ort, String stadionname, Conference conference, Division division,
+	public Teams(String teamname, String ort, String stadionname, String conference, String division,
 			int superbowlTitel, int championshipTitel, int gruendungsjahr) {
 		super();
 		this.teamname = teamname;
@@ -24,6 +20,11 @@ public class Team {
 		this.gruendungsjahr = gruendungsjahr;
 	}
 
+	
+	public Teams() {
+		super();
+	}
+	
 
 	public String getTeamname() {
 		return teamname;
@@ -50,28 +51,30 @@ public class Team {
 	}
 
 
-	public void setStadionname(String stadionname) {
-		this.stadionname = stadionname;
-	}
+	
 
-
-	public Conference getConference() {
+	public String getConference() {
 		return conference;
 	}
 
 
-	public void setConference(Conference conference) {
+	public void setConference(String conference) {
 		this.conference = conference;
 	}
 
 
-	public Division getDivision() {
+	public String getDivision() {
 		return division;
 	}
 
 
-	public void setDivision(Division division) {
+	public void setDivision(String division) {
 		this.division = division;
+	}
+
+
+	public void setStadionname(String stadionname) {
+		this.stadionname = stadionname;
 	}
 
 

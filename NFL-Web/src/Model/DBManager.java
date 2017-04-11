@@ -31,14 +31,92 @@ public class DBManager {
 		return instance;
 	}
 	
-	public ArrayList<Team> searchSpieler(String phrase){
+	public ArrayList<Spieler> searchSpieler(String phrase){
 		
-		return null; 
+		ArrayList<Spieler> spielerListe = new ArrayList<Spieler>();
+		PreparedStatement stmt = null;
+		String sql;
+		ResultSet rs;
+		
+		try {
+			sql = "Select * from Teile where bezeichnung like ?";
+			stmt = conn.prepareStatement(sql);
+		
+			stmt.setString(1,"%"+phrase+"%");
+			
+			rs = stmt.executeQuery();
+		
+			
+			while(rs.next()){
+				Spieler spieler = new Spieler();
+				
+				spieler.setSpielerID(rs.getInt("spielerID"));
+				spieler.setVorname(rs.getString("vorname"));
+				spieler.setNachname(rs.getString("nachname"));
+				spieler.setGeburtsdatum(rs.getString("geburtsdatum"));
+				spieler.setSuperBowlErfolge(rs.getInt("superBowlErfolge"));
+				spieler.setChampionshipTitel(rs.getInt("champioshipTitel"));
+				spieler.setProwbowlWahlen(rs.getInt("probowlWahlen"));
+				spieler.setSeasonMVP(rs.getInt("seasonMVP"));
+				spieler.setSuperbowlMVP(rs.getInt("superbowlMVP"));
+				
+				spielerListe.add(spieler);
+			}
+			
+			rs.close();
+			stmt.close();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return spielerListe; 
 	}
 	
-	public ArrayList<Spieler> searchTeams(String phrase){
+	
+	public ArrayList<Teams> searchTeams(String phrase){
 		
-		return null;
+		ArrayList<Teams> teamListe = new ArrayList<Teams>();
+		PreparedStatement stmt = null;
+		String sql;
+		ResultSet rs;
+		
+		try {
+			sql = "Select * from Teams where bezeichnung like ?";
+			stmt = conn.prepareStatement(sql);
+		
+			stmt.setString(1,"%"+phrase+"%");
+			
+			rs = stmt.executeQuery();
+		
+			
+			while(rs.next()){
+				Teams team = new Teams();
+				
+				team.setTeamname(rs.getString("teamname"));
+				team.setOrt(rs.getString("ort"));
+				team.setStadionname(rs.getString("stadionname"));
+				team.setConference(rs.getString("conference"));
+				team.setDivision(rs.getString("division"));
+				team.setSuperbowlTitel(rs.getInt("superbowltitel"));
+				team.setChampionshipTitel(rs.getInt("championshipTitel"));
+				team.setGruendungsjahr(rs.getInt("gruendungsjahr"));
+				
+				teamListe.add(team);
+			}
+			
+			rs.close();
+			stmt.close();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return teamListe; 
 	}
 
 }
