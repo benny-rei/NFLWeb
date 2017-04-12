@@ -2,7 +2,7 @@
  * 
  */
 
-function loadDoc() {
+function loadInfo() {
 			var xhttp = new window.XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (xhttp.readyState == 4 && xhttp.status == 200) {
@@ -15,4 +15,4 @@ function loadDoc() {
 			};
 			xhttp.open("GET", "NFLServlet", true);
 			xhttp.send();
-		}
+}
