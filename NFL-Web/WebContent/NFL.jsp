@@ -7,12 +7,12 @@
 <!-- Bootstrap  -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <!-- eigenes Bootstrap-CSS -->
-<link rel="stylesheet" href="/home/bennny/git/NFLWeb/NFL-Web/WebContent/Bootsprap/css/bootstrap.css"/>
-
+<style type="text/css">
+    <%@include file="Bootstrap/css/bootstrap.css" %>
+</style>
 
 <!-- eigenes Bootstrap-JS -->
-<script
-	src="/home/bennny/git/NFLWeb/NFL-Web/WebContent/Bootsprap/js/bootstrap.min.js"></script>
+<script src="Bootsprap/js/bootstrap.min.js"></script>
 <!--/ Bootstrap  -->
 
 
@@ -24,7 +24,7 @@
 
 	<button id="anzeigeButton" onclick="loadDoc()">Anzeigen</button>
 
-	<div id="spieler">Zuig</div>
+	<div id="spieler">Zuig1</div>
 
 
 	<script>
@@ -34,23 +34,16 @@
 			xhttp.onreadystatechange = function() {
 				if (xhttp.readyState == 4 && xhttp.status == 200) {
 					
-					//document.getElementById("spieler").innerHTML = this.responseText;
-					document.getElementById("spieler").innerHTML = "Test";
+					var obj = JSON.parse(this.responseText);
+					
+					document.getElementById("spieler").innerHTML = obj;
+					//document.getElementById("spieler").innerHTML = "Test";
 				}
 			};
 			xhttp.open("GET", "NFLServlet", true);
 			xhttp.send();
 		}
 		
-
-		/*$(document).on("click", "#anzeigeButton", function() { // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
-			$.get("NFLServlet", function(responseJson) { // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
-				var $ul = $("<ul>").appendTo($("#spieler")); // Create HTML <ul> element and append it to HTML DOM element with ID "somediv".
-				$.each(responseJson, function(index, item) { // Iterate over the JSON array.
-					$("<li>").text(item).appendTo($ul); // Create HTML <li> element, set its text content with currently iterated item and append it to the <ul>.
-				});
-			});
-		});*/
 	</script>
 
 </body>

@@ -1,6 +1,7 @@
 package Control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -24,7 +25,6 @@ public class NFLServlet extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public NFLServlet() {
-        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -54,12 +54,18 @@ public class NFLServlet extends HttpServlet {
 		spieler.add(new Spieler(4,"big", "ben", "23.03.2010", 5, 6,3,3,3));
 		
 		
-		String jsonText = new Gson().toJson(spieler);
+		Gson json = new Gson();
+				
+		
+		PrintWriter pw = response.getWriter();
+		pw.println(json.toJson(spieler));
+		pw.flush();
+		pw.close();
 					
-		response.setContentType("text/plain");
+		/*response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write("hello");
-		System.out.println("Gesendet");
+		response.getWriter().write(jsonText);
+		System.out.println("Gesendet");*/
 	}
 
 }
