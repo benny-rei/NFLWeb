@@ -40,10 +40,12 @@
 
 
 <script type="text/javascript">
-	function loadTeams(phrase) {
+	function loadTeams() {
 		var xhttp = new window.XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (xhttp.readyState == 4 && xhttp.status == 200) {
+				
+				var phrase = document.getElementById("teamInput").innerHTML;
 				
 				var obj = JSON.parse(this.responseText);
 				
@@ -54,17 +56,19 @@
 				var col = [];
 		        var tr = table.insertRow(-1);                   // TABLE ROW.
 
+		        team.setTeamname(rs.getString("teamname"));
+				team.setOrt(rs.getString("ort"));
+				team.setStadionname(rs.getString("stadionname"));
+				team.setConference(rs.getString("conference"));
+				team.setDivision(rs.getString("division"));
+				team.setSuperbowlTitel(rs.getInt("superbowltitel"));
+				team.setChampionshipTitel(rs.getInt("championshipTitel"));
+				team.setGruendungsjahr(rs.getInt("gruendungsjahr"));
+				
+		        
 		        var th = document.createElement("th");      // TABLE HEADER.
-	            th.innerHTML = "championshipTitel";
-	            tr.appendChild(th);
-		        
-	            th.innerHTML = "conference";
-	            tr.appendChild(th);
-		        
-	            th.innerHTML = "division";
-	            tr.appendChild(th);
 	            
-	            th.innerHTML = "gruendungsjahr";
+		        th.innerHTML = "teamname";
 	            tr.appendChild(th);
 	            
 	            th.innerHTML = "ort";
@@ -73,10 +77,19 @@
 	            th.innerHTML = "stadionname";
 	            tr.appendChild(th);
 	            
+	            th.innerHTML = "conference";
+	            tr.appendChild(th);
+	            
+	            th.innerHTML = "division";
+	            tr.appendChild(th);
+	            
 	            th.innerHTML = "superbowlTitel";
 	            tr.appendChild(th);
 	            
-	            th.innerHTML = "teamname";
+		        th.innerHTML = "championshipTitel";
+	            tr.appendChild(th);
+	            
+	            th.innerHTML = "gruendungsjahr";
 	            tr.appendChild(th);
 	            
 
@@ -97,8 +110,9 @@
 				
 			}
 		};
+		var sendString = phrase+" team"
 		xhttp.open("GET", "NFLServlet", true);
-		xhttp.send(phrase);
+		xhttp.send(sendString);
 	}
 	
 	function loadSpieler() {
@@ -106,14 +120,67 @@
 		xhttp.onreadystatechange = function() {
 			if (xhttp.readyState == 4 && xhttp.status == 200) {
 				
+				var phrase = document.getElementById("spielerInput").innerHTML;
+				
 				var obj = JSON.parse(this.responseText);
 				
-				document.getElementById("spieler").innerHTML = obj;
-				//document.getElementById("spieler").innerHTML = "Test";
+		        // CREATE DYNAMIC TABLE.
+		        var table = document.createElement("table");
+
+		        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+				var col = [];
+		        var tr = table.insertRow(-1);                   // TABLE ROW.
+		        
+
+		        var th = document.createElement("th");      // TABLE HEADER.
+		        th.innerHTML = "spielerID";
+	            tr.appendChild(th);
+	            
+	            th.innerHTML = "vorname";
+	            tr.appendChild(th);
+		        
+	            th.innerHTML = "nachname";
+	            tr.appendChild(th);
+		        
+	            th.innerHTML = "geburtsdatum";
+	            tr.appendChild(th);
+	            
+	            th.innerHTML = "superbowlErfolge";
+	            tr.appendChild(th);
+	             
+	            th.innerHTML = "championshipTitel";
+	            tr.appendChild(th);
+	            
+	            th.innerHTML = "prowbowlWahlen";
+	            tr.appendChild(th);
+	            
+	            th.innerHTML = "seasonMVP";
+	            tr.appendChild(th);
+	            
+	            th.innerHTML = "superbowlMVP";
+	            tr.appendChild(th);
+	            
+
+		        for (var i = 0; i < obj.length; i++) {
+
+		            tr = table.insertRow(-1);
+
+		            for (var j = 0; j < col.length; j++) {
+		                var tabCell = tr.insertCell(-1);
+		                tabCell.innerHTML = obj[i][col[j]];
+		            }
+		        }
+
+		        var divContainer = document.getElementById("spielerDiv");
+		        divContainer.innerHTML = "";
+		        divContainer.appendChild(table);
+		    
+				
 			}
 		};
+		var sendString = phrase+" spieler"
 		xhttp.open("GET", "NFLServlet", true);
-		xhttp.send();
+		xhttp.send(sendString);
 	}
 </script>
 
@@ -289,14 +356,14 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label for="Team">Teams</label>
-                                <input type="text" class="form-control" placeholder="Teams" id="teamsBtn" onclick="loadTeams">
+                                <input type="text" class="form-control" placeholder="Teams" id="teamInput" onclick="loadTeams()">
                                 <p class="help-block text-danger"></p> <button type="submit" class="btn btn-success btn-lg">search for teams</button>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label for="Spieler">Teams</label>
-                                <input type="text" class="form-control" placeholder="Spieler" id="spielerBtn" onclick="loadSpieler">
+                                <input type="text" class="form-control" placeholder="Spieler" id="spielerInout" onclick="loadSpieler()">
                                 <p class="help-block text-danger"></p> <button type="submit" class="btn btn-success btn-lg">search for players</button>
                             </div>
                         </div>
