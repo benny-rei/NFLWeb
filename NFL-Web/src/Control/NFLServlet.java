@@ -52,7 +52,7 @@ public class NFLServlet extends HttpServlet {
 			
 			ArrayList<Spieler> spieler = new ArrayList<Spieler>();
 			
-			spieler = db.searchSpieler();
+			spieler = db.searchSpieler("search");
 			
 			Gson json = new Gson();
 					
